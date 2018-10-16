@@ -6,7 +6,7 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:58:16 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/15 09:59:39 by zwang            ###   ########.fr       */
+/*   Updated: 2018/10/15 15:33:19 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_D		2
 # define KEY_F		3
 # define ESC		53
+# define DEEP_BLUE	0x000077ee
 
 enum			{x_axis, y_axis};
 
@@ -48,6 +49,7 @@ typedef struct	s_model
 	int			row;
 	int			col;
 	int			**map;
+	int			**color;
 	t_point		*p1;
 	t_point		*p2;
 	t_point		*startp;
@@ -59,7 +61,7 @@ typedef struct	s_model
 
 void	store_map(const char *file_name, t_model *model);
 
-void	draw_line(t_model *model);
+void	draw_line(t_model *model, int color);
 
 void	copy_point(t_point *dst, const t_point *src);
 void	move_point(t_point *p, t_bool is_x, int move);
