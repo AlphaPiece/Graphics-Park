@@ -6,7 +6,7 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 16:14:18 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/15 16:15:23 by zwang            ###   ########.fr       */
+/*   Updated: 2018/10/23 18:15:47 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	get_map_size(const char *file_name, t_model *model)
 		if (!model->col)
 			model->col = ft_strccount(line, ' ');
 		model->row++;
+		free(line);
 	}
 }
 

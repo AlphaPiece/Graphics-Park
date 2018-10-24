@@ -6,21 +6,25 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 13:38:42 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/15 10:04:24 by zwang            ###   ########.fr       */
+/*   Updated: 2018/10/23 18:14:17 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+int		g_x = 2100;
+int		g_y = 1200;
+
 void	init_stat(t_model *model)
 {
-	model->startp->x = 700;
-	model->startp->y = 400;
-	model->param1 = 40;
-	model->param2 = 25;
-	model->param3 = 15;
+	model->startp->x = g_x / 5;
+	model->startp->y = g_y / 5;
+	model->param1 = g_x / (model->col + 50);
+	model->param2 = g_y / (model->row + 50);
+	model->param3 = model->param1 / 3;
 	model->param4 = 4;
 	draw_map(model);
+	mlx_string_put(model->mlx, model->window, 4, 2, RUBY_RED, H1 H2 H3);
 }
 
 t_bool	is_valid_key(int key)
@@ -72,6 +76,7 @@ int		key_handler(int key, t_model *model)
 		else
 			change_param(model, key);
 		draw_map(model);
+		mlx_string_put(model->mlx, model->window, 4, 2, RUBY_RED, H1 H2 H3);
 	}
 	return (0);
 }
@@ -85,12 +90,12 @@ int		main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		store_map(argv[1], &model);
 		model.mlx = mlx_init();
-		model.window = mlx_new_window(model.mlx, 2100, 1200, "My Window");
+		model.window = mlx_new_window(model.mlx, g_x, g_y, "My Window");
 		model.p1 = &p1;
 		model.p2 = &p2;
 		model.startp = &startp;
-		store_map(argv[1], &model);
 		init_stat(&model);
 		mlx_hook(model.window, 2, 2, key_handler, &model);
 		mlx_loop(model.mlx);

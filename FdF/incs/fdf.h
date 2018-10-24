@@ -6,7 +6,7 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:58:16 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/15 15:33:19 by zwang            ###   ########.fr       */
+/*   Updated: 2018/10/23 17:39:17 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <math.h>
 
+# define HEIGHT		1200
+# define WIDTH		2100
 # define KEY_SPACE	49
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
@@ -33,6 +35,10 @@
 # define KEY_F		3
 # define ESC		53
 # define DEEP_BLUE	0x000077ee
+# define RUBY_RED	0x00aa0000
+# define H1			"Q W E R A S D F "
+# define H2			"RIGHTWARD-ARROW LEFTWARD-ARROW "
+# define H3			"UPWARD-ARROW DOWNWARD-ARROW"
 
 enum			{x_axis, y_axis};
 
