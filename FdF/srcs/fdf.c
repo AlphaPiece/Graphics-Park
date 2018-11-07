@@ -6,7 +6,7 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 13:38:42 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/23 18:14:17 by zwang            ###   ########.fr       */
+/*   Updated: 2018/11/07 12:52:16 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_stat(t_model *model)
 {
 	model->startp->x = g_x / 5;
 	model->startp->y = g_y / 5;
-	model->param1 = g_x / (model->col + 50);
-	model->param2 = g_y / (model->row + 50);
-	model->param3 = model->param1 / 3;
-	model->param4 = 4;
+	model->v1 = g_x / (model->col + 50);
+	model->v2 = g_y / (model->row + 50);
+	model->v3 = model->v1 / 3;
+	model->v4 = 4;
 	draw_map(model);
 	mlx_string_put(model->mlx, model->window, 4, 2, RUBY_RED, H1 H2 H3);
 }
@@ -46,21 +46,21 @@ void	change_param(t_model *model, int key)
 	else if (key == KEY_LEFT)
 		model->startp->x -= 10;
 	else if (key == KEY_W)
-		model->param2--;
+		model->v2--;
 	else if (key == KEY_S)
-		model->param2++;
+		model->v2++;
 	else if (key == KEY_E)
-		model->param4++;
+		model->v4++;
 	else if (key == KEY_D)
-		model->param4--;
+		model->v4--;
 	else if (key == KEY_Q)
-		model->param1--;
+		model->v1--;
 	else if (key == KEY_R)
-		model->param1++;
+		model->v1++;
 	else if (key == KEY_A)
-		model->param3++;
+		model->v3++;
 	else if (key == KEY_F)
-		model->param3--;
+		model->v3--;
 }
 
 

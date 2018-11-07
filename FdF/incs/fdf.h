@@ -6,7 +6,7 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:58:16 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/23 17:39:17 by zwang            ###   ########.fr       */
+/*   Updated: 2018/11/07 13:00:57 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ typedef struct	s_model
 	t_point		*p1;
 	t_point		*p2;
 	t_point		*startp;
-	int			param1;
-	int			param2;
-	int			param3;
-	int			param4;
+	int			v1;
+	int			v2;
+	int			v3;
+	int			v4;
 }				t_model;
 
-void	store_map(const char *file_name, t_model *model);
+void			store_map(const char *file_name, t_model *model);
 
-void	draw_line(t_model *model, int color);
+void			draw_line(t_model *model, int color);
 
-void	copy_point(t_point *dst, const t_point *src);
-void	move_point(t_point *p, t_bool is_x, int move);
+void			copy_point(t_point *dst, const t_point *src);
+void			move_point(t_point *p, t_bool is_x, int move);
 
-void	draw_map(t_model *model);
+void			draw_map(t_model *model);
 
 #endif

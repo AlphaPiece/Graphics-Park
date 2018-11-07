@@ -6,13 +6,13 @@
 /*   By: zwang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 16:14:18 by zwang             #+#    #+#             */
-/*   Updated: 2018/10/23 18:15:47 by zwang            ###   ########.fr       */
+/*   Updated: 2018/11/07 12:55:15 by zwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	get_map_size(const char *file_name, t_model *model)
+void		get_map_size(const char *file_name, t_model *model)
 {
 	int		fd;
 	char	*line;
@@ -29,7 +29,7 @@ void	get_map_size(const char *file_name, t_model *model)
 	}
 }
 
-void	set_init_color(t_model *model)
+void		set_init_color(t_model *model)
 {
 	int	i;
 	int	j;
@@ -47,20 +47,13 @@ void	set_init_color(t_model *model)
 	}
 }
 
-void	store_map(const char *file_name, t_model *model)
+static void	record_map(int fd, t_model *model)
 {
 	char	*ptr;
 	char	**str_list;
-	int		*int_list;
 	size_t	i;
 	size_t	j;
-	int		fd;
 
-	get_map_size(file_name, model);
-	if (!(model->map = (int **)malloc(sizeof(int *) * model->row)))
-		perror("malloc");
-	set_init_color(model);
-	fd = open(file_name, O_RDONLY);
 	i = -1;
 	while (ft_nextline(fd, &ptr) > 0)
 	{
@@ -77,4 +70,17 @@ void	store_map(const char *file_name, t_model *model)
 		}
 		ft_strarrdel(str_list);
 	}
+}
+
+void		store_map(const char *file_name, t_model *model)
+{
+	int	fd;
+
+	get_map_size(file_name, model);
+	if (!(model->map = (int **)malloc(sizeof(int *) * model->row)))
+		perror("malloc");
+	set_init_color(model);
+	if ((fd = open(file_name, O_RDONLY)) < 0)
+		perror("open");
+	record_map(fd, model);
 }
