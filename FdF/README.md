@@ -1,2 +1,4 @@
-# fdf
-interactive 3d map
+# FdF (Wireframe Rasterizer)
+
+## *An interactive 3D map.*
+
