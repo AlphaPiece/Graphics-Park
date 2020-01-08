@@ -1,4 +1,4 @@
-# GraphicsPark
+# Graphics Park
 
 ## *A visual feast.*
 
